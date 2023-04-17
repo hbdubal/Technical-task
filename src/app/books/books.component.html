@@ -1,0 +1,26 @@
+<section class="mt-5">
+    <div class="container-fluid">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>bookId</th>
+                    <th>bookName</th>
+                    <th>bookImage</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Add to cart</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of bookDetails">
+                    <td>{{book.id}}</td>
+                    <td>{{book.bookname}}</td>
+                    <td><img src="../../assets/images/{{book.imageName}}.jpg" alt="" width="50px"></td>
+                    <td><a (click)="removeItem(book)" class="bi bi-dash-circle pointer"></a> {{book.quantity}} <a (click)="addItem(book)" class="bi bi-plus-circle pointer"></a></td>
+                    <td>{{book.price}}</td>
+                    <td><button type="button" class="btn btn-light" (click)="addToCart(book)">Add to Cart</button>                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -1,0 +1,31 @@
+<section class="mt-5">
+    <div class="container-fluid">
+        <ng-container *ngIf="cartProduct.length>0; else emptyCart">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>bookId</th>
+                    <th>bookName</th>
+                    <th>bookImage</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr *ngFor="let product of cartProduct; let i=index;">
+                        <td>{{product.id}}</td>
+                        <td>{{product.bookname}}</td>
+                        <td><img src="../../assets/images/{{product.imageName}}.jpg" alt="" width="50px"></td>
+                        <td><a (click)="removeProduct(product,i)" class="bi bi-dash-circle pointer"></a> {{product.quantity}}
+                            <a (click)="addProduct(product)" class="bi bi-plus-circle pointer"></a></td>
+                        <td>{{product.price}}</td>
+                        <td><button type="button" class="btn btn-danger" (click)="deleteProduct(product,i)">Remove</button>                    </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+    </ng-container>
+    <ng-template #emptyCart>Cart is empty</ng-template>
+    </div>
+</section>
